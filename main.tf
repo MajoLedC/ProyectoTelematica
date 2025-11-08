@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_security_group" "allow_web" {
   name        = "allow_web"
-  description = "Permitir tráfico HTTP para Streamlit"
+  description = "Permitir trafico HTTP para Streamlit"
 
   ingress {
     description = "Puerto Streamlit"
