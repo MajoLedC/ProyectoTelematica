@@ -34,7 +34,7 @@ resource "aws_instance" "streamlit_frontend" {
   ami                    = "ami-0c398cb65a93047f2"
   instance_type          = "t3.micro"
   key_name               = "ProyectoTele_Key"
-  vpc_security_group_ids = [aws_security_group.allow_web.id]
+  vpc_security_group_ids = [aws_security_group.acceso_web.id]
 
   user_data = <<-EOF
               #!/bin/bash
@@ -59,7 +59,7 @@ resource "aws_instance" "streamlit_frontend" {
     Name = "StreamlitFrontend"
   }
 
-  depends_on = [aws_security_group.allow_web]
+  depends_on = [aws_security_group.acceso_web]
 }
 
 output "public_ip" {
