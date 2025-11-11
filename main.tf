@@ -38,31 +38,19 @@ resource "aws_instance" "streamlit_frontend" {
 
   user_data = <<-EOF
               #!/bin/bash
-              exec > /var/log/user-data.log 2>&1
-              set -ex
+              sudo apt update -y
+              sudo apt install -y docker.io docker-compose git
 
-              apt update -y
-              apt upgrade -y
-              apt install -y docker.io git curl
+              sudo systemctl enable docker
+              sudo systemctl start docker
 
-              # Instalar docker-compose manualmente
-              curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-              chmod +x /usr/local/bin/docker-compose
-
-              systemctl enable docker
-              systemctl start docker
-
-              # Clonar el repositorio
               cd /home/ubuntu
-              git clone https://github.com/MajoLedC/ProyectoTelematica.git
+              sudo git clone https://github.com/MajoLedC/ProyectoTelematica.git
               cd ProyectoTelematica/app/frontend
 
-              # Dar permisos a ubuntu
-              chown -R ubuntu:ubuntu /home/ubuntu/ProyectoTelematica
-
-              # Ejecutar como usuario ubuntu
-              sudo -u ubuntu /usr/local/bin/docker-compose up -d --build
+              sudo docker-compose up -d --build
               EOF
+
 
   tags = {
     Name = "StreamlitFrontend"
