@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - Desarrollo #permite que haga pruebas en esta rama
 
 jobs:
   terraform:
