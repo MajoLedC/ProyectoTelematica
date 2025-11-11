@@ -2,8 +2,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_security_group" "allow_web" {
-  name        = "allow_web"
+resource "aws_security_group" "Acceso web" {
+  name        = "Acceso web"
   description = "Permitir trafico HTTP para Streamlit"
 
   ingress {
