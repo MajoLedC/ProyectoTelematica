@@ -64,7 +64,7 @@ Agrega los siguientes secrets:
 |------------|-------------|---------|
 | `AWS_ACCESS_KEY_ID` | Tu Access Key ID de AWS | `AKIAIOSFODNN7EXAMPLE` |
 | `AWS_SECRET_ACCESS_KEY` | Tu Secret Access Key de AWS | `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` |
-| `AWS_REGION` | Región de AWS a utilizar | `us-east-1` |
+| `AWS_SESSION_TOKEN` | Token de acceso temporal | `KAKSnialkshum==98jUi8K...` |
    
 Para crearlos, navega a **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
 
@@ -128,4 +128,5 @@ Se añadió un workflow para eliminar todos los recursos creados y evitar costos
 | **Python** | Lenguaje de programación principal |
 
 ⭐ Si este proyecto te fue útil, no olvides darle una estrella en GitHub!
+
 
