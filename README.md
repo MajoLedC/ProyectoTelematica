@@ -78,6 +78,25 @@ Para crearlos, navega a **Settings** → **Secrets and variables** → **Actions
 git clone https://github.com/MajoLedC/ProyectoTelematica.git
 cd ProyectoTelematica
 ```
+### Para Despliegue Local con Terraform
+
+```bash
+terraform init
+terraform plan 
+terraform apply 
+yes (cuando solicite la información)
+terraform output 
+```
+eso te mostrará la salida para ingresar a la aplicación.
+http://<IP_PUBLICA>:8501
+
+### Despliegue desde GitHub Actions
+
+1. Selecciona el flujo de trabajo “Apply AWS Infrastructure” en el GitHub Actions de tu repositorio.
+2. Se ejecutará manualmente, entonces espera a que el workflow finalice (~3–5 minutos).
+Al finalizar, verás en los logs o outputs la IP pública de tu instancia EC2.
+http://<IP_PUBLICA>:8501
+
 ## Comprobación
 
 Una vez desplegada la infraestructura:
@@ -87,32 +106,6 @@ Una vez desplegada la infraestructura:
    ```
    http://<IP_PUBLICA>:8501
    ```
-
-## 🚀 Despliegue
-
-El despliegue se realiza automáticamente mediante GitHub Actions.
-
-### Opción 1: Despliegue Manual (Trigger)
-
-1. Ve a la pestaña **Actions** en tu repositorio de GitHub
-2. Selecciona el workflow **"Apply Infrastructure"** (`apply.yml`)
-3. Haz clic en **Run workflow**
-4. Selecciona la rama (generalmente `main`)
-5. Confirma la ejecución
-
-### Opción 2: Despliegue Automático
-
-El workflow se ejecutará automáticamente cuando:
-- Hagas `push` a la rama `main`
-- Realices cambios en los archivos `.tf` o en el directorio `frontend/`
-
-### Monitorear el despliegue
-
-1. Ve a **Actions** en GitHub
-2. Observa el progreso del workflow en tiempo real
-3. Una vez completado, verás las salidas en los logs, incluyendo:
-   - IP pública de la instancia EC2
-   - URL de acceso a la aplicación
 
 ## Destrucción de Infraestructura
 
@@ -135,3 +128,4 @@ Se añadió un workflow para eliminar todos los recursos creados y evitar costos
 | **Python** | Lenguaje de programación principal |
 
 ⭐ Si este proyecto te fue útil, no olvides darle una estrella en GitHub!
+
