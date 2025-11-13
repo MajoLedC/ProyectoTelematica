@@ -1,7 +1,7 @@
 name: Destroy AWS Infrastructure
 
 on:
-  workflow_dispatch:  # Solo manual, para evitar destrucciones accidentales
+  workflow_dispatch:  # Se ejecuta manualmente
 
 jobs:
   terraform-destroy:
@@ -15,21 +15,19 @@ jobs:
       AWS_REGION: us-east-1
 
     steps:
-      - name: Checkout
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
+      - name: ⚙️ Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.9.0
 
-      - name: Terraform Init
-        working-directory: .
-        run: terraform init
+      - name: 🧱 Initialize Terraform
+        run: terraform init -input=false
 
-      - name: Terraform Destroy
-        working-directory: .
+      - name: 💣 Destroy Infrastructure
         run: terraform destroy -auto-approve
 
-      - name: Confirmation
-        run: echo "Infraestructura destruida correctamente"
+      - name: ✅ Confirmation
+        run: echo "Infraestructura destruida correctamente ✅"
