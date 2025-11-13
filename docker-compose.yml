@@ -4,7 +4,7 @@ services:
   streamlit_app:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: streamlit_app
     ports:
       - "8501:8501"
