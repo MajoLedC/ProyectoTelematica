@@ -52,8 +52,6 @@ resource "aws_instance" "streamlit_frontend" {
               exec > /var/log/user-data.log 2>&1
               set -ex
 
-              echo "=== Inicio de instalación $(date) ==="
-
               # Actualizar sistema
               apt update -y
               apt upgrade -y
@@ -68,7 +66,6 @@ resource "aws_instance" "streamlit_frontend" {
               # Agregar ubuntu al grupo docker
               usermod -aG docker ubuntu
 
-              echo "=== Clonando repositorio ==="
               cd /home/ubuntu
 
               # Clonar repositorio

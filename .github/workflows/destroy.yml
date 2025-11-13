@@ -12,21 +12,24 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+      AWS_REGION: us-east-1
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: 1.9.0
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
 
-    - name: Terraform Init
-      run: terraform init
+      - name: Terraform Init
+        working-directory: .
+        run: terraform init
 
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+      - name: Terraform Destroy
+        working-directory: .
+        run: terraform destroy -auto-approve
 
-    - name: Confirmation
-      run: echo " Infraestructura destruida correctamente"
+      - name: Confirmation
+        run: echo "Infraestructura destruida correctamente"
